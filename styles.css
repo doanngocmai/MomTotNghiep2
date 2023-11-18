@@ -81,8 +81,6 @@
   .footer {
       padding: 5px 0;
       bottom: 0;
-      width: 980px;
-      margin: 0 auto;
       background-color: #7b7676;
       color: white;
       text-align: center;
@@ -196,13 +194,25 @@
   .info-vitae {
       padding-left: 320px;
   }
-  .body-vitae{
-    padding: 60px 30px;
-    display: flex;
+
+  .body-vitae {
+      padding: 60px 30px;
+      display: flex;
   }
-  .left-vitae{
-    width: 60%;
+
+  .left-vitae {
+      width: 60%;
   }
-  .right-vitae{
-    width: 60%;
+
+  .right-vitae {
+      width: 60%;
+  }
+
+  .content {
+      display: flex;
+  }
+
+  .content-menu {
+      width: 400px;
+      background-color: beige;
   }
