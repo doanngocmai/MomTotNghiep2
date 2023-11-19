@@ -509,3 +509,67 @@
   .d-flex {
       display: flex;
   }
+
+
+  .drawing {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      margin: 10px;
+      display: inline-block;
+  }
+
+
+  .calculator {
+      width: 220px;
+      border: 1px solid #ccc;
+      padding: 10px;
+  }
+
+  .calculator input[type="text"] {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px;
+  }
+
+  .calculator .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+  }
+
+  .calculator .buttons button {
+      padding: 10px;
+  }
+
+  .content-menu {
+      display: inline-block;
+      margin-right: 10px;
+  }
+
+  .content-menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+  }
+
+  .content-menu li {
+      display: inline;
+      cursor: pointer;
+  }
+
+  .content-menu li:hover {
+      font-weight: bold;
+  }
+
+  .content-menu .selected {
+      color: blue;
+      font-weight: bold;
+  }
+
+  .content-menu .menu-title {
+      margin-top: 20px;
+      font-weight: bold;
+  }
+
+  .ex-menu {}

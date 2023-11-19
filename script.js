@@ -223,14 +223,14 @@ window.onload = function () {
   var checkboxes = document.querySelectorAll('input[type="checkbox"]');
   var firstCheckbox = checkboxes[0];
 
-  firstCheckbox.addEventListener("change", function () {
-    var isChecked = firstCheckbox.checked;
+  // firstCheckbox.addEventListener("change", function () {
+  //   var isChecked = firstCheckbox.checked;
 
-    checkboxes.forEach(function (checkbox) {
-      checkbox.checked = isChecked;
-      toggleHighlight(checkbox);
-    });
-  });
+  //   checkboxes.forEach(function (checkbox) {
+  //     checkbox.checked = isChecked;
+  //     toggleHighlight(checkbox);
+  //   });
+  // });
 
   checkboxes.forEach(function (checkbox) {
     checkbox.addEventListener("change", function () {
@@ -299,3 +299,88 @@ window.onload = function () {
     }
   }
 };
+
+let intervalId = null;
+const drawings = document.getElementsByClassName("drawing");
+let currentIndex = 0;
+let direction = 1;
+
+function animateDrawings() {
+  drawings[currentIndex].style.backgroundColor = "red";
+
+  if (currentIndex === 0 || currentIndex === drawings.length - 1) {
+    direction *= -1;
+  }
+
+  drawings[currentIndex].style.backgroundColor = "";
+
+  currentIndex += direction;
+}
+
+function jump() {
+  setInterval(animateDrawings, 500);
+}
+
+function stop() {
+  clearInterval(setInterval(animateDrawings, 500));
+}
+
+// Lấy các phần tử DOM cần sử dụng
+const resultInput = document.getElementById("result");
+let currentInput = "";
+
+// Hàm thêm số vào biểu thức hiện tại
+function appendNumber(number) {
+  currentInput += number;
+  updateResult();
+}
+
+// Hàm thêm dấu thập phân vào biểu thức hiện tại
+function appendDecimal(decimal) {
+  if (!currentInput.includes(decimal)) {
+    currentInput += decimal;
+    updateResult();
+  }
+}
+
+// Hàm thực hiện các phép tính +, -, *, /, %
+function operate(operator) {
+  currentInput += operator;
+  updateResult();
+}
+
+// Hàm chuyển đổi dấu của số hiện tại
+function toggleSign() {
+  if (currentInput !== "") {
+    const firstCharacter = currentInput.charAt(0);
+    if (firstCharacter === "-") {
+      currentInput = currentInput.slice(1);
+    } else {
+      currentInput = "-" + currentInput;
+    }
+    updateResult();
+  }
+}
+
+// Hàm xử lý phép tính và hiển thị kết quả
+function calculate() {
+  try {
+    const result = eval(currentInput);
+    currentInput = result.toString();
+    updateResult();
+  } catch (error) {
+    currentInput = "";
+    resultInput.value = "Error";
+  }
+}
+
+// Hàm cập nhật giá trị hiển thị
+function updateResult() {
+  resultInput.value = currentInput;
+}
+
+// Hàm xóa dữ liệu đầu vào
+function clearInput() {
+  currentInput = "";
+  updateResult();
+}
