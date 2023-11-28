@@ -198,6 +198,106 @@ function validateFile() {
   document.getElementById("file-form").reset();
 }
 
+// form nhap
+window.onload = function () {
+  // Set focus to the fullname input field when the page loads
+  document.getElementById("fullname").focus();
+
+  // Add event listeners for input fields
+  var inputs = document.getElementsByClassName("required");
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener("keyup", function (event) {
+      if (event.keyCode === 13) {
+        // Enter key
+        focusNextInput(this);
+      }
+    });
+  }
+
+  // Blur event for fullname input field
+  document.getElementById("fullname").addEventListener("blur", function () {
+    normalizeName(this);
+  });
+
+  // Focus event for birthdate input field
+  document.getElementById("birthdate").addEventListener("focus", function () {
+    this.style.color = "black";
+    if (this.value === "nn/tt/nnnn") {
+      this.value = "";
+    }
+  });
+
+  // Blur event for birthdate input field
+  document.getElementById("birthdate").addEventListener("blur", function () {
+    if (this.value === "") {
+      this.value = "nn/tt/nnnn";
+      this.style.color = "gray";
+    } else {
+      autoFormatDate(this);
+    }
+  });
+
+  // Click event for accept button
+  document
+    .getElementById("accept-button")
+    .addEventListener("click", function () {
+      validateForm();
+    });
+};
+
+function normalizeName(inputElement) {
+  var name = inputElement.value.trim();
+  var normalized = name.replace(/\s+/g, " ").replace(/(^|\s)\S/g, function (c) {
+    return c.toUpperCase();
+  });
+  inputElement.value = normalized;
+}
+
+function autoFormatDate(inputElement) {
+  var value = inputElement.value.trim();
+  if (value.length === 2 || value.length === 5) {
+    inputElement.value = value + "/";
+  }
+}
+
+function focusNextInput(currentInput) {
+  var form = currentInput.form;
+  var inputs = form.getElementsByClassName("required");
+  for (var i = 0; i < inputs.length; i++) {
+    if (inputs[i] === currentInput) {
+      if (i + 1 < inputs.length) {
+        inputs[i + 1].focus();
+        break;
+      }
+    }
+  }
+}
+
+function validateForm() {
+  var form = document.getElementById("registration-form");
+  var inputs = form.getElementsByClassName("required");
+  var isValid = true;
+
+  for (var i = 0; i < inputs.length; i++) {
+    var input = inputs[i];
+    var errorSpan = input.nextElementSibling;
+
+    if (input.value.trim() === "") {
+      errorSpan.textContent = "Vui lòng nhập thông tin.";
+      isValid = false;
+    } else {
+      errorSpan.textContent = "";
+    }
+  }
+
+  if (isValid) {
+    // Perform further validation or submit the form
+    form.submit();
+  }
+}
+
+// tab
+
 function openCity(evt, cityName) {
   // Declare all variables
   var i, tabcontent, tablinks;
@@ -219,6 +319,7 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 
+// danh sách
 window.onload = function () {
   var checkboxes = document.querySelectorAll('input[type="checkbox"]');
   var firstCheckbox = checkboxes[0];
@@ -300,6 +401,7 @@ window.onload = function () {
   }
 };
 
+// hoạt cảnh
 let intervalId = null;
 const drawings = document.getElementsByClassName("drawing");
 let currentIndex = 0;
@@ -325,62 +427,74 @@ function stop() {
   clearInterval(setInterval(animateDrawings, 500));
 }
 
-// Lấy các phần tử DOM cần sử dụng
-const resultInput = document.getElementById("result");
-let currentInput = "";
-
-// Hàm thêm số vào biểu thức hiện tại
+// 7.10. máy tính
 function appendNumber(number) {
-  currentInput += number;
-  updateResult();
+  document.getElementById("result").value += number;
 }
 
-// Hàm thêm dấu thập phân vào biểu thức hiện tại
-function appendDecimal(decimal) {
-  if (!currentInput.includes(decimal)) {
-    currentInput += decimal;
-    updateResult();
+function appendOperator(operator) {
+  const result = document.getElementById("result").value;
+
+  const lastCharacter = result.slice(-1);
+
+  if (lastCharacter !== operator) {
+    document.getElementById("result").value += operator;
   }
 }
 
-// Hàm thực hiện các phép tính +, -, *, /, %
-function operate(operator) {
-  currentInput += operator;
-  updateResult();
+function clearResult() {
+  document.getElementById("result").value = "";
 }
 
-// Hàm chuyển đổi dấu của số hiện tại
-function toggleSign() {
-  if (currentInput !== "") {
-    const firstCharacter = currentInput.charAt(0);
-    if (firstCharacter === "-") {
-      currentInput = currentInput.slice(1);
-    } else {
-      currentInput = "-" + currentInput;
-    }
-    updateResult();
-  }
+function deleteLastCharacter() {
+  const result = document.getElementById("result").value;
+
+  document.getElementById("result").value = result.slice(0, -1);
 }
 
-// Hàm xử lý phép tính và hiển thị kết quả
 function calculate() {
-  try {
-    const result = eval(currentInput);
-    currentInput = result.toString();
-    updateResult();
-  } catch (error) {
-    currentInput = "";
-    resultInput.value = "Error";
+  const result = document.getElementById("result").value;
+
+  const calculatedResult = eval(result);
+
+  document.getElementById("result").value = calculatedResult;
+}
+
+// 7.8 menu
+function selectMenu(menuId) {
+  debugger;
+  // Lấy danh sách tất cả các mục menu
+  var menuItems = document.getElementsByClassName("menu-item");
+
+  // Xóa lớp "selected" khỏi tất cả các mục menu
+  for (var i = 0; i < menuItems.length; i++) {
+    menuItems[i].classList.remove("selected");
   }
+
+  // Thêm lớp "selected" cho mục menu được chọn
+  var selectedMenuItem = document.getElementById("menu-item-" + menuId);
+  selectedMenuItem.classList.add("selected");
+
+  // Hiển thị tiêu đề của thực đơn được chọn
+  var selectedMenuTitle = selectedMenuItem.innerHTML;
+  document.getElementById("selected-menu-title").innerHTML = selectedMenuTitle;
 }
 
-// Hàm cập nhật giá trị hiển thị
-function updateResult() {
-  resultInput.value = currentInput;
+// 7.9 Cây thư mục
+// Lấy tất cả các nút toggle
+var toggles = document.getElementsByClassName("toggle");
+
+// Gắn sự kiện click cho các nút toggle
+for (var i = 0; i < toggles.length; i++) {
+  toggles[i].addEventListener("click", toggleNode);
 }
 
-// Hàm xóa dữ liệu đầu vào
-function clearInput() {
-  currentInput = "";
-  updateResult();
+// Gắn sự kiện click cho các nút node
+var nodes = document.getElementsByClassName("node");
+
+for (var j = 0; j < nodes.length; j++) {
+  nodes[j].addEventListener("click", selectNode);
 }
+
+// Hàm xử lý sự kiện click cho các nút toggle
+function toggleNode() {}

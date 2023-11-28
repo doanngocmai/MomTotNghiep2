@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2.7.1. Bài tập ví dụ mẫu</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <script type="text/javascript" src="/script.js"></script>
+
+</head>
+
+<body>
+    <div class="content-box">
+        <nav id="left">
+            <div class="nav-info">
+                <div class="img-avt">
+                    <img src="/img/avt.png" class="img-info">
+                </div>
+                <div class="text-info">
+                    <b>Đoàn Thị Ngọc Mai</b>
+                    <div>AT150438</div>
+                </div>
+            </div>
+            <div class="content-menu">
+                <ul class="nav-menu">
+                    <li class="active"><a href="/bai3/example2.html">2.7.1. Bài tập ví dụ mẫu</a></li>
+                    <li><a href="/bai3/test.html">2.7.2. Thi trắc nghiệm</a></li>
+                    <li><a href="/bai3/formLOP.html">2.7.3. Thiết kế form nhập liệu cho table LOP</a></li>
+                    <li><a href="/bai3/formHOSO.html">2.7.4. Thiết kế form nhập liệu cho table HOSO</a></li>
+                    <li><a href="/bai3/formNhap.html">2.7.5. Form nhập</a></li>
+                    <li><a href="/bai3/list.html">2.7.6. Danh sách</a></li>
+                    <li><a href="/bai3/menu.html">2.7.7. Thực đơn</a></li>
+                    <li><a href="/bai3/tab.html">2.7.8. Tab</a></li>
+                    <li><a href="/bai3/tree.html">2.7.9. Cây</a></li>
+                    <li><a href="/Bai3/calculator.html">2.7.10. Máy tính</a></li>
+                    <li><a href="/Bai3/hoatcanh.html">2.7.11. Hoạt cảnh</a></li>
+                    <li><a href="/">2.7.12. Sắp xếp và tìm kiếm trên bảng </a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section id="right">
+            <div class="banner-home">
+                <img src="/img/banner1.png">
+            </div>
+            <div class="content-body content-pading">
+                <ul class="list-example">
+                    <li><a href="/Bai3/exmple2/cau1.html"><b>Câu 1. Sử dụng biến</b></a></li>
+                    <li><b>Câu 2. Sử dụng Textbox và Chương trình con</b>
+                        <form name="cau2">
+                            <input type="text" name="T1">
+                            <input type="button" name="c" value="chay thu" onclick="chay()">
+                        </form>
+                    </li>
+                    <li><b>Câu 3. Ví dụ sử dụng câu lệnh IF</b>
+                        <form name="cau3">
+                            <input type="text" name="T1">
+                            <input type="button" name="c" value="chay thu" onclick="chay3()">
+                        </form>
+                    </li>
+                    <li><a href="/Bai3//exmple2/cau4.html"><b>Câu 4. Ví dụ sử dụng đối tượng ngày tháng năm trong
+                                JS</b></a>
+                        <div id="result-4"></div>
+                    </li>
+                    <li><a href="/Bai3/exmple2/cau5.html"><b>Câu 5. Ví dụ sử dụng câu lệnh switch</b></a></li>
+                    <li onclick="disp_confirmt()"><b>Câu 6. Ví dụ sử dụng confirm</b>
+                        <input type="button" onclick="disp_confirm()" value="Display a confirm box" />
+                    </li>
+                    <li onclick="disp_prompt()"><b>Câu 7. Ví dụ sử dụng prompt</b>
+                        <input type="button" onclick="disp_prompt()" value="Display a prompt box" />
+                    </li>
+                    <li><a href="/Bai3/exmple2/cau8.html"><b>Câu 8. Ví dụ sử dụng kiểu String</b></a></li>
+                    <li><a href="/Bai3/exmple2/cau9.html"><b>Câu 9. Ví dụ sử dụng kiểu ARRAY</b></a></li>
+                    <li><b>Câu 10. Ví dụ kiểu thiết lập thời gian</b>
+                        <form>
+                            <input type="button" value="Display timed alertbox!" onClick="timedMsg()">
+                        </form>
+                        <p>Click on the button above. An alert box will be displayed after 5 seconds.</p>
+
+                    </li>
+                    <li><b>Câu 11. Ví dụ khác về cách sử dụng thiết lập thời gian</b>
+                        <form name="lam">
+                            <input type="button" value="Display timed text!" onClick="timedText()">
+                            <input type="text" id="txt">
+                        </form>
+                    </li>
+                    <li onclick="startTime()"><b>Câu 12. Đồng hồ</b>
+                        <div id="txt11"></div>
+                    </li>
+                    <li><b>Câu 13. Hiệu ứng ảnh</b>
+                        <div>
+                            <a href="http://www.dayhoctructuyen.com" target="_blank">
+                                <img alt="Chao ban" src="img/a.gif" name="b1" width="206" height="106"
+                                    onmouseover="mouseOver()" onmouseout="mouseOut()"></a>
+                        </div>
+                    </li>
+                    <li><b>Câu 14. Sử dụng Select ...option</b>
+                        <form name="myform">
+                            <select onChange="disphone(phone,this.options[this.selectedIndex].value);">
+                                <option value="lam"> Lê Thanh Lâm
+                                <option value="duc"> Nguyễn đinh minh Đức
+                                <option value="thinh"> Trần Văn thịnh
+                                <option value="hien"> Đỗ Thế Hiền
+                                <option value="daotao"> Phòng Đào tạo
+                            </select>
+                            <input type="text" name="numbox" value="" disabled>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+    </div>
+    </section>
+    </div>
+    <div class="footer">
+        <p>© 2023 Copyright: Ngọc Mai</p>
+    </div>
+</body>
+
+</html>
