@@ -621,9 +621,9 @@
   }
 
   /* 7.7 */
-  .list-menu {
+  /* .list-menu {
       display: flex;
-  }
+  } */
 
   .ex-menu li {
       list-style: none;

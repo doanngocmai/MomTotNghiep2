@@ -18,7 +18,7 @@ main {
 
 .left {
   width: 250px;
-  background-color: yellow;
+  background-color: #ccc;
   height: calc(100vh - 50px);
 }
 
